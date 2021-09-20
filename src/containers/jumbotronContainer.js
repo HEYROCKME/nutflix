@@ -2,6 +2,8 @@
 
 import React from 'react'
 import Jumbotron from '../components/jumbotron'
+import JumboData from '../fixtures/jumbo.json'
+
 
 export function JumbotronContainer() {
 
@@ -9,8 +11,19 @@ export function JumbotronContainer() {
 return (
 
 <Jumbotron.Container>
-<Jumbotron.Title>NUTFLIX</Jumbotron.Title>
-<Jumbotron.SubTitle>Filmography of the world of nuts</Jumbotron.SubTitle>
+    {JumboData.map((item) => (
+
+        <Jumbotron key={item.id} direction={item.direction}>
+
+            <Jumbotron.Pane>
+            <Jumbotron.Title> {item.title} </Jumbotron.Title>
+            <Jumbotron.SubTitle>{item.subTitle}</Jumbotron.SubTitle>
+            </Jumbotron.Pane>
+            <Jumbotron.Image src={item.image} alt={item.alt} />
+
+        </Jumbotron>
+    ) )}
+
 </Jumbotron.Container>
 )
 

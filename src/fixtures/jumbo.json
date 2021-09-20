@@ -1,18 +1,18 @@
 [
     {
       "id": 1,
-      "title": "Enjoy on your TV.",
+      "title": "Enjoy on your nuts.",
       "subTitle": "Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more.",
       "image": "/images/misc/home-tv.jpg",
-      "alt": "Tiger King on Netflix",
+      "alt": "Pistachio nuts",
       "direction": "row"
     },
     {
       "id": 2,
-      "title": "Download your programmes to watch on the go.",
+      "title": "Download your nuts to watch on the go.",
       "subTitle": "Save your data and watch all your favourites offline.",
       "image": "/images/misc/home-mobile.jpg",
-      "alt": "Tiger King on Netflix",
+      "alt": "An arrangement of Almonds",
       "direction": "row-reverse"
     },
     {
@@ -20,7 +20,7 @@
       "title": "Watch everywhere.",
       "subTitle": "Stream unlimited films and TV programmes on your phone, tablet, laptop and TV without paying more.",
       "image": "/images/misc/home-imac.jpg",
-      "alt": "Money Heist on Netflix",
+      "alt": "A outdoor shop offering various seeds and nuts.",
       "direction": "row"
     }
   ]
