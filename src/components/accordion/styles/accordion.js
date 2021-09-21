@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 
-
-//Container, Inner , Title, Header, Body
         export const Container = styled.section`
                 display: flex;
                 border-bottom: 8px solid #222;
@@ -13,18 +11,18 @@ import styled from "styled-components";
                 padding: 70px 45px;
                 max-width: 815px;
                 margin: auto;
-
         `;
 
 
         export const Frame = styled.div`
-                margin-bottom: 40px;                
+                
+                max-width: 1200px;                
         `;
 
         export const Item = styled.div`
                 color: #fff;
                 margin-bottom: 10px;
-                
+                max-width: 1200px;                
                 &:first-of-type {
                         margin-top: 3em;
                 }
@@ -54,6 +52,16 @@ import styled from "styled-components";
                 align-items: center;
                 border-bottom: solid 5px black;
 
+
+                img {
+                        filter: brightness(0) invert(1);
+                        width: 24px;
+                        
+                        @media (max-width: 600px) {
+                            width: 16px;
+                        }
+                    }
+
                 @media (max-width: 600px) {
                         font-size: 18px;
                     }
@@ -61,7 +69,7 @@ import styled from "styled-components";
 
         `;
         export const Body = styled.body`
-                max-width: 1200px;
+                box-sizing: border-box;
                 transition: max-height 0.25s cubic-bezier(0.5, 0, 0.1, 1);
                 font-weight: normal;
                 line-height: normal;
