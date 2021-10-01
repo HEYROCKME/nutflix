@@ -27,7 +27,7 @@ export const Error = styled.div`
 
 `;
 
-export const Base = styled.div`
+export const Base = styled.form`
     display: flex;
     flex-direction: column;
     max-width: 450px;
@@ -68,6 +68,14 @@ export const Submit = styled.button`
 
     &:disabled {
         opacity: 0.5;
+    }
+
+    &:hover{
+        background-color: blue;
+    }
+
+    &:active{
+        background-color:salmon;
     }
 
 

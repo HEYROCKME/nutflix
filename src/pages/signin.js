@@ -1,17 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
+import { FirebaseContext } from "../context/firebase";
 import { HeaderContainer } from '../containers/HeaderContainer'
 import { Form } from '../components'
 import { FooterContainer } from "../containers/footerContainer";
+import * as ROUTES from '../constants/routes'
+
 
 export default function SignIn() {
+    const history = useHistory()
+    const { firebase } = useContext(FirebaseContext)
+
     const [error, setError] = useState('');
     const [emailAddress, setEmailAddress] = useState('');
     const [password, setPassword] = useState('')
 
-    const isInvalid = password === '' | emailAddress === ''
+    const isInvalid = password === '' || emailAddress === ''
 
-    const handleSignIn = (event) => {
+    const handleSignin = (event) => {
+        console.log('Clicked')
         event.preventDefault();
+
+        firebase
+            .auth()
+            .signInWithEmailAndPassword(emailAddress, password)
+            .then(() => {
+                //push to the browse page
+                history.push(ROUTES.BROWSE)
+                setEmailAddress('')
+                setPassword('')
+
+
+            }).catch((error) => {
+              
+                setError(error.meddage)
+            })
 
 
     }
@@ -23,7 +46,7 @@ export default function SignIn() {
                 <Form.Title>Sign In</Form.Title>
                 {error && <Form.Error>{error}</Form.Error>}
 
-                 <Form.Base onSubmit={handleSignIn} method="POST">
+                 <Form.Base id="sign-in" onSubmit={handleSignin} method="POST">
                         <Form.Input
                         placeholder="Email"
                         value={emailAddress}
@@ -39,9 +62,10 @@ export default function SignIn() {
                     />
 
 
-                    <Form.Submit disabled={isInvalid} type="submit">
+                    <Form.Submit form="sign-in" type="submit">
                         Sign In
                     </Form.Submit>
+                    
                     <Form.Text>
                         New to Netflix? <Form.Link to="/signup">Sign up now.</Form.Link>
                     </Form.Text>    
