@@ -1,6 +1,5 @@
 import React from "react";
 import { Link as ReachRouterLink } from 'react-router-dom'
-import { Feature } from "..";
 import {Background, Container, Logo, ButtonLink, Group, Text, Link, Feature, CallOut, PlayButton } from './styles/header'
 
 
