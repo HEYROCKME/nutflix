@@ -28,7 +28,7 @@ export default function SignUp({children, ...restProps}) {
 
             firebase
                 .auth()
-                .createUserWithEmailAndPassword()
+                .createUserWithEmailAndPassword(emailAddress, password)
                 .then((result) => 
                     result.user
                     .updateProfile({
