@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Header } from "../components";
+import React, { useState, useEffect } from "react";
+import { Header, Loading } from "../components";
 import * as ROUTES from '../constants/routes'
 import { FirebaseContext} from '../context/firebase'
 import {SelectProfileContainer} from './profileContainer'
@@ -7,22 +7,31 @@ import { FooterContainer } from "./footerContainer";
 import { Profiler } from "react/cjs/react.production.min";
 
 
+
 export function BrowseContainer() {
 
     const [category, setCategory] = useState('series')
     const [profile, setProfile] = useState({})
     const [loading, setLoading] = useState(true)
+    const [searchTerm, setSearchTerm] = useState('')
+
 
 
     const user = {
-        displayName: "Pea",
+        displayName: "PeaNut",
         photoURL: "1"
     };
 
+    useEffect(()=> {
+        setTimeout(() => {
+            setLoading(false)
+        }, 3000);
+    }, [user])
 
     return profile.displayName ? (
         
         <>
+        {loading ? <Loading src={user.photoURL}/> : <Loading.ReleaseBody /> }
         <Header src="joker1" >
             <Header.Frame>
                 <Header.Group>
@@ -41,6 +50,23 @@ export function BrowseContainer() {
                     </Header.Link>
                 </Header.Group>
 
+                <Header.Group>
+                    <Header.Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+                    <Header.Profile>
+                        <Header.Picture src={user.photoURL}/>
+                        <Header.Dropdown>
+                            <Header.Group>
+                                <Header.Picture src={user.photoURL}/>
+                                <Header.Link>{user.displayName}</Header.Link>
+                            </Header.Group>
+                            <Header.Group>
+                                <Header.Link onClick={() => FirebaseContext.auth().signOut()}>
+                                    Sign out
+                                </Header.Link>
+                            </Header.Group>
+                        </Header.Dropdown>                        
+                    </Header.Profile>
+                </Header.Group>
             </Header.Frame>
             <Header.Feature>
                 <Header.FeatureCallOut>Watch Cashews now! </Header.FeatureCallOut>
