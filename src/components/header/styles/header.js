@@ -175,3 +175,67 @@ export const Text = styled.p`
     
     `;
 
+    export const Picture  = styled.img`
+    background: url(${({ src }) => src});
+    background-size: contain;
+    border: 0;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    `;
+    
+    
+    export const Dropdown = styled.div`
+    display: none;
+    position: absolute;
+    background-color: black;
+    padding: 10px;
+    width: 100px;
+    top: 32px;
+    right: 0px;
+    
+    ${Group}:last-of-type ${Link} {
+        cursor: pointer;
+    }
+    
+    ${Group} {
+        margin-bottom: 10px;
+        
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+        
+        ${Link}, ${Picture} {
+            cursor: default;
+        }
+    }
+    
+    button {
+        margin-right: 10px;
+    }
+    
+    p {
+        font-size: 12px;
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+    
+    
+    `;
+
+    export const Profile  = styled.div`
+        display: flex;
+        align-items: center;
+        margin-left: 20px;
+        position: relative;
+        
+        button {
+            cursor: pointer;
+        }
+        
+        &:hover > ${Dropdown} {
+            display: flex;
+            flex-direction: column;
+        }
+    
+    `;
